@@ -45,7 +45,7 @@ export default function ReviewMovies() {
 
   const fetchReviews = async () => {
     try {
-      const res = await fetch('/api/reviews/all');
+      const res = await fetch('https://qazaqcinema.onrender.com/api/reviews/all');
       const data = await res.json();
       setReviews(data);
     } catch (error) {
