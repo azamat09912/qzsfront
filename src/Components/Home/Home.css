@@ -1,0 +1,136 @@
+
+.hero-section {
+  position: relative;
+  width: 99vw;
+  height: 93vh; 
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(23%); 
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 5.6rem;
+  position: relative;
+  left: -290px;
+  bottom: 110px;
+}
+
+
+.hero-content p {
+  font-size: 1.5rem;
+  color: white;
+  position: relative;
+    left: -290px;
+    bottom: 120px;
+}
+.know-more {
+  background: linear-gradient(to right, #4b1ccd, #2c1961);
+  color: white;
+  padding: 12px 32px; /* Больше отступов */
+  border: none;
+  border-radius: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 20px; /* Сделаем текст чуть крупнее */
+  cursor: pointer;
+  width: 200px;
+  height: 50px;
+  position: relative;
+  left: -600px;
+  bottom: 60px;
+}
+
+.know-more:hover {
+   background: linear-gradient(to right, #ff3333, #cc0000);
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+@media (max-width: 480px) {
+  .hero-section {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    left: 0;
+    bottom: 0;
+    padding: 0 12px;
+  }
+
+  .know-more {
+    left: 0;
+    bottom: 0;
+    margin-top: 20px;
+    width: 80%;
+    font-size: 0.95rem;
+    height: 42px;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (min-width: 481px) and (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: 3.5rem;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+    left: 0;
+    bottom: 0;
+    padding: 0 20px;
+  }
+
+  .know-more {
+    left: 0;
+    bottom: 0;
+    margin-top: 25px;
+    width: 60%;
+    font-size: 1.1rem;
+    height: 46px;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

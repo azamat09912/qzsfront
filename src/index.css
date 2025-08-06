@@ -1,0 +1,27 @@
+:root {
+  --primary: #4a6fa5;
+  --secondary: #7c9eb2;
+  --accent: #59c9a5;
+  --text: #333;
+  --bg: #fff;
+  --card-bg: #fff;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.dark-theme {
+  --primary: #166088;
+  --secondary: #4a6fa5;
+  --accent: #4bc0d9;
+  --text: #f8f9fa;
+  --bg: #040b18;
+  --card-bg: #1e1e1e;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: var(--transition);
+}
+ 

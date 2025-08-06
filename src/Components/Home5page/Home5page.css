@@ -1,0 +1,61 @@
+.korzina-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.korzina-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2.5em;
+}
+
+.korzina-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+.korzina-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.korzina-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.korzina-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .korzina-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  
+  .korzina-title {
+    font-size: 2em;
+  }
+  
+  .korzina-item img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .korzina-grid {
+    grid-template-columns: 1fr;
+  }
+}

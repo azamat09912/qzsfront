@@ -1,0 +1,224 @@
+/* Основные цвета */
+:root {
+  --deep-black: #0a0a12;
+  --dark-blue: #0f1626;
+  --blood-red: #e50914;
+  --electric-blue: #00a8e8;
+  --gray-text: #b3b3b3;
+  --light-text: #f5f5f5;
+  --input-bg: #1a1a2e;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Базовые стили */
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: var(--transition);
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 450px;
+  background: rgba(15, 22, 38, 0.9);
+  border-radius: 12px;
+  padding: 40px 35px;
+  box-shadow: 0 0 15px rgba(0, 168, 232, 0.3),
+              0 0 30px rgba(229, 9, 20, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(229, 9, 20, 0.1);
+  animation: fadeIn 0.8s ease-out;
+}
+
+.auth-container h2 {
+  text-align: center;
+  color: var(--blood-red);
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  text-shadow: 0 2px 4px rgba(229, 9, 20, 0.3);
+}
+
+/* Стили для инпутов */
+.input-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 45px;
+  background-color: var(--input-bg);
+  border: 1px solid #2a3a5e;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: var(--light-text);
+  transition: var(--transition);
+  box-sizing: border-box;
+}
+
+.input-group input::placeholder {
+  color: var(--gray-text);
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--blood-red);
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.3),
+              inset 0 0 10px rgba(0, 168, 232, 0.1);
+}
+
+.input-group .icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: var(--electric-blue);
+  font-size: 1.1rem;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--gray-text);
+  transition: var(--transition);
+}
+
+.toggle-password:hover {
+  color: var(--electric-blue);
+}
+
+/* Общие стили для всех кнопок */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-sizing: border-box;
+  text-align: center;
+  margin: 5px 0;
+  border: none;
+}
+
+/* Основная кнопка */
+.login-submit-btn {
+  background: linear-gradient(135deg, var(--blood-red) 0%, #c31432 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+}
+
+.login-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+}
+
+/* Кнопка переключения */
+.login-toggle-btn {
+  background: transparent;
+  color: var(--electric-blue);
+  border: 1px solid var(--electric-blue);
+}
+
+.login-toggle-btn:hover {
+  background: rgba(0, 168, 232, 0.1);
+  color: var(--light-text);
+}
+
+/* Сообщения */
+.login-message {
+  text-align: center;
+  margin: 20px 0;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.login-message.success {
+  background: rgba(0, 168, 232, 0.1);
+  color: var(--electric-blue);
+  border: 1px solid var(--electric-blue);
+}
+
+.login-message.error {
+  background: rgba(229, 9, 20, 0.1);
+  color: var(--blood-red);
+  border: 1px solid var(--blood-red);
+}
+
+/* Разделитель */
+.login-hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(229, 9, 20, 0.3) 50%, 
+            transparent 100%);
+  margin: 25px 0;
+}
+
+/* Переключатель темы */
+.login-theme-toggle {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.login-theme-button {
+  background: rgba(15, 22, 38, 0.7);
+  color: var(--electric-blue);
+  border: 1px solid var(--electric-blue);
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.login-theme-button:hover {
+  background: rgba(0, 168, 232, 0.2);
+  color: white;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптивность */
+@media screen and (max-width: 480px) {
+  .auth-container {
+    padding: 30px 20px;
+  }
+  
+  .auth-container h2 {
+    font-size: 1.8rem;
+  }
+  
+  .input-group input,
+  .login-btn {
+    padding: 12px 40px;
+  }
+  
+  .login-theme-toggle {
+    top: 20px;
+    right: 20px;
+  }
+}

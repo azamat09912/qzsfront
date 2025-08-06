@@ -1,0 +1,504 @@
+:root {
+  --director-primary: #1a1a2e;
+  --director-secondary: #16213e;
+  --director-accent: #2b2324;
+  --director-text: #f1f1f1;
+  --director-text-muted: #b8b8b8;
+  --director-card-bg: #1a1a2e;
+  --director-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Запрещаем горизонтальный скролл */
+}
+
+.directors-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  color: var(--director-text);
+  background-color: var(--director-bg);
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(233, 69, 96, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(22, 33, 62, 0.2) 0%, transparent 25%);
+  animation: filmReelIntro 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes filmReelIntro {
+  0% { opacity: 0; background-position: 0% 50%; }
+  100% { opacity: 1; background-position: 100% 50%; }
+}
+
+/* ===== Заголовок ===== */
+.directors-container h1 {
+  text-align: center;
+  margin: 2rem 0 3rem;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--director-text);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  animation: titleAppear 1s ease-out 0.3s both;
+}
+
+@keyframes titleAppear {
+  from { 
+    opacity: 0; 
+    transform: translateY(-30px);
+    letter-spacing: 10px;
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+    letter-spacing: 2px;
+  }
+}
+
+.directors-container h1::before,
+.directors-container h1::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 3px;
+  background: var(--director-accent);
+  transform: translateY(-50%);
+  opacity: 0;
+  animation: filmStrip 0.8s ease-out 0.8s forwards;
+}
+
+.directors-container h1::before {
+  left: -70px;
+}
+
+.directors-container h1::after {
+  right: -70px;
+}
+
+@keyframes filmStrip {
+  from { 
+    opacity: 0; 
+    width: 0;
+  }
+  to { 
+    opacity: 1; 
+    width: 50px;
+  }
+}
+
+/* ===== Панель управления ===== */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background: rgba(26, 26, 46, 0.7);
+  border-radius: 10px;
+  box-shadow: var(--director-shadow);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  animation: controlPanelAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both;
+}
+
+@keyframes controlPanelAppear {
+  from { 
+    opacity: 0; 
+    transform: scale(0.95) translateY(20px);
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Кнопка переключения */
+.toggle-btn {
+  padding: 0.9rem 2rem;
+  background: linear-gradient(135deg, var(--director-accent), #d23369);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+.toggle-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #d23369, var(--director-accent));
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+.toggle-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(233, 69, 96, 0.6);
+}
+
+.toggle-btn:hover::before {
+  opacity: 1;
+}
+
+.toggle-btn.active {
+  background: linear-gradient(135deg, var(--director-secondary), #1a1a3e);
+  box-shadow: 0 4px 15px rgba(22, 33, 62, 0.4);
+}
+
+.toggle-btn.active:hover {
+  box-shadow: 0 8px 25px rgba(22, 33, 62, 0.6);
+}
+
+/* Поле сортировки */
+.sort-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  backdrop-filter: blur(5px);
+}
+
+.sort-wrapper label {
+  font-weight: 500;
+  color: var(--director-text-muted);
+  font-size: 0.9rem;
+}
+
+.sort-select {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: var(--director-text);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: var(--director-accent);
+  box-shadow: 0 0 0 2px rgba(233, 69, 96, 0.3);
+}
+
+/* Поле поиска */
+.search-wrapper {
+  position: relative;
+  flex-grow: 1;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+.search-logo {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1.2rem;
+  width: 1.2rem;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.9rem 1rem 0.9rem 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: var(--director-text);
+  font-size: 1rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  backdrop-filter: blur(5px);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--director-accent);
+  box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.search-input::placeholder {
+  color: var(--director-text-muted);
+}
+
+/* ===== Сетка режиссеров ===== */
+.directors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+  animation: directorsGridAppear 1s ease-out 0.7s both;
+}
+
+@keyframes directorsGridAppear {
+  from { 
+    opacity: 0; 
+    transform: perspective(1000px) rotateX(10deg) translateY(50px);
+  }
+  to { 
+    opacity: 1; 
+    transform: perspective(1000px) rotateX(0) translateY(0);
+  }
+}
+
+/* ===== Карточка режиссера ===== */
+.director-card {
+  position: relative;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  color: var(--text); /* Добавляем это свойство */
+}
+
+
+.director-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom, 
+    rgba(233, 69, 96, 0.1) 0%, 
+    transparent 30%, 
+    transparent 70%, 
+    rgba(22, 33, 62, 0.2) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.director-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  border-color: rgba(233, 69, 96, 0.3);
+}
+
+.director-card:hover::before {
+  opacity: 1;
+}
+
+/* Фото режиссера */
+.director-photo {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: top;
+  border-bottom: 3px solid var(--director-accent);
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  filter: grayscale(20%) contrast(110%);
+}
+
+.director-card:hover .director-photo {
+  filter: grayscale(0%) contrast(120%);
+  transform: scale(1.05);
+}
+
+
+.director-card h3 {
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.director-card h3::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: var(--director-accent);
+  transition: width 0.4s ease;
+}
+
+.director-card:hover h3::after {
+  width: 100%;
+}
+
+.director-bio {
+  color: var(--text);
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.director-card:hover .director-bio {
+  color: var(--director-text);
+}
+
+.director-birthyear {
+  color: var(--text);
+  margin: 10px 0;
+  font-size: 0.9rem;
+}
+
+.director-birthyear::before {
+  content: '🎬';
+  font-size: 1rem;
+}
+
+/* Кнопка избранного */
+.fav-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: var(--transition);
+}
+
+.fav-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1) rotate(15deg);
+}
+
+
+.fav-btn svg {
+  transition: var(--transition);
+}
+
+.fav-btn.favorited svg {
+  fill: red;
+  stroke: red;
+  animation: pulse 0.5s ease-in-out;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ===== Сообщения ===== */
+.loader,
+.error,
+.no-directors {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  grid-column: 1 / -1;
+  animation: fadeIn 0.6s ease both;
+}
+
+.loader {
+  color: var(--director-accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loader::after {
+  content: '';
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid var(--director-accent);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.error {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  padding: 2rem;
+  border-radius: 10px;
+  border-left: 4px solid #ff6b6b;
+}
+
+.no-directors {
+  color: var(--director-text-muted);
+  font-style: italic;
+}
+
+/* ===== Адаптация ===== */
+@media (max-width: 1024px) {
+  .directors-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .director-photo {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .directors-container h1 {
+    font-size: 2.2rem;
+    margin: 1.5rem 0 2.5rem;
+  }
+  
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1.2rem;
+  }
+  
+  .search-wrapper {
+    max-width: 100%;
+    order: -1;
+  }
+  
+  .director-photo {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .directors-container h1 {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+  
+  .directors-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .director-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .director-bio {
+    font-size: 0.9rem;
+    min-height: 60px;
+  }
+  
+  .fav-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .fav-btn svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}

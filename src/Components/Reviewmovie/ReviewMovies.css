@@ -1,0 +1,361 @@
+:root {
+  --primary: #4a6fa5;
+  --secondary: #7c9eb2;
+  --accent: #59c9a5;
+  --text: #333;
+  --bg: #fff;
+  --card-bg: #fff;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --border-radius: 10px;
+}
+
+.dark-theme {
+  --primary: #166088;
+  --secondary: #4a6fa5;
+  --accent: #4bc0d9;
+  --text: #f8f9fa;
+  --bg: #040b18;
+  --card-bg: #1e1e1e;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Базовые стили */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: var(--transition);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+.review-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Кнопка переключения темы */
+.theme-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.theme-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.theme-btn:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+/* Заголовки */
+.review-title {
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 10px;
+}
+
+.reviews-title {
+  color: var(--primary);
+  font-size: 1.8rem;
+  border-bottom: 1px solid var(--secondary);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* Форма */
+.review-form {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 30px;
+  transition: var(--transition);
+}
+
+.review-textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid var(--secondary);
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  margin-bottom: 15px;
+  resize: vertical;
+  min-height: 120px;
+  transition: var(--transition);
+  font-family: inherit;
+  box-sizing: border-box;
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+.review-textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(89, 201, 165, 0.3);
+}
+
+/* Рейтинг */
+.rating-container {
+  margin-bottom: 20px;
+}
+
+.rating-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.rating-value {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.star-rating {
+  display: flex;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #e4e5e9;
+  transition: var(--transition);
+}
+
+.star.active {
+  color: #ffc107;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+/* Кнопки */
+.submit-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: var(--transition);
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover:not(.submitting) {
+  background: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.submit-btn.submitting {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+.submit-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-icon {
+  margin-right: 8px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.delete-all-btn {
+  margin: 20px 0;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.delete-all-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Сообщения */
+.message {
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: var(--border-radius);
+  text-align: center;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.message.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Список отзывов */
+.reviews-section {
+  margin-top: 40px;
+}
+
+.no-reviews {
+  text-align: center;
+  padding: 30px;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  color: var(--secondary);
+  box-shadow: var(--shadow);
+}
+
+.reviews-grid {
+  display: grid;
+  gap: 25px;
+}
+
+.review-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.avatar-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  overflow: hidden;
+  position: relative;
+}
+
+.review-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.review-avatar.loaded {
+  opacity: 1;
+}
+
+.review-user {
+  flex: 1;
+}
+
+.user-name {
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+.review-date {
+  color: var(--secondary);
+}
+
+.review-rating {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  color: #f39c12;
+  font-size: 1.1rem;
+}
+
+.rating-text {
+  margin-left: 10px;
+  color: var(--text);
+  font-weight: bold;
+}
+
+.review-content {
+  margin: 15px 0 0;
+  line-height: 1.6;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.review-card {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .review-container {
+    padding: 15px;
+  }
+  
+  .review-title {
+    font-size: 1.8rem;
+  }
+  
+  .review-form {
+    padding: 15px;
+  }
+  
+  .review-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .avatar-wrapper {
+    margin-bottom: 10px;
+  }
+}

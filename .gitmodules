@@ -1,0 +1,3 @@
+[submodule "qzs"]
+  path = qzs
+  url = https://github.com/azamat09912/qzs.git
