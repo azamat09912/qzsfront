@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Director.css';
+import './director.css';
 
 export default function Directors() {
   const [directors, setDirectors] = useState([]);
